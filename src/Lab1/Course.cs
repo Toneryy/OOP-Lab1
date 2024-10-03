@@ -1,9 +1,8 @@
 ﻿namespace Lab1
 {
-    public abstract class Course
+    public abstract class Course : ICourse
     {
         public string Title { get; set; }
-
         public IReadOnlyCollection<Student> Students { get; private set; }
 
         private readonly List<Student> _students = new List<Student>();
@@ -20,4 +19,3 @@
         }
     }
 }
-

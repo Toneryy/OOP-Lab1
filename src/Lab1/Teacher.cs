@@ -1,10 +1,8 @@
 ﻿namespace Lab1
 {
-
-    public class Teacher
+    public class Teacher : IPerson
     {
         public string Name { get; set; }
-
         public IReadOnlyCollection<Course> Courses { get; private set; }
 
         private readonly List<Course> _courses = new List<Course>();
@@ -21,4 +19,3 @@
         }
     }
 }
-

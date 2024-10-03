@@ -1,26 +1,21 @@
 ﻿namespace Lab1
 {
-    public class CourseManager
+    public class CourseManager : IManageCourses
     {
-        public IReadOnlyCollection<Course> Courses { get; private set; }
+        private readonly List<ICourse> _courses = new List<ICourse>();
 
-        private readonly List<Course> _courses = new List<Course>();
+        public IReadOnlyCollection<ICourse> Courses => _courses.AsReadOnly();
 
-        public CourseManager()
-        {
-            Courses = _courses.AsReadOnly();
-        }
-
-        public void AddCourse(Course course)
+        public void AddCourse(ICourse course)
         {
             _courses.Add(course);
         }
 
-        public IReadOnlyCollection<Course> GetCoursesByTeacher(Teacher teacher)
+        public IReadOnlyCollection<ICourse> GetCoursesByTeacher(Teacher teacher)
         {
-            var coursesByTeacher = new List<Course>();
+            var coursesByTeacher = new List<ICourse>();
 
-            foreach (Course course in _courses)
+            foreach (ICourse course in _courses)
             {
                 if (course is OnlineCourse onlineCourse && onlineCourse.Url == teacher.Name)
                 {
